@@ -1,0 +1,45 @@
+// @generated-by-plop
+import { Button } from "@/components/button";
+import { EmailContentWrapper } from "@/components/email-wrapper";
+import { Link } from "@/components/link";
+import { Typography } from "@/components/typography";
+import { useEmailVariables } from "@/lib/context/variable-context";
+
+export interface {{pascalCase folder}}{{pascalCase componentName}}Props {
+  email: string;
+  name?: string;
+}
+
+const EmailBody = ({ name }: {{pascalCase folder}}{{pascalCase componentName}}Props) => {
+  const { baseHref } = useEmailVariables();
+
+  return (
+    <div className="content-body">
+      {name ? <Typography>Hi {name},</Typography> : null}
+      <Typography>
+        This is the {{sentenceCase componentName}} email.
+      </Typography>
+      <br />
+      <Link href={baseHref('{{buttonPath}}')}>this is a link</Link>
+      <br />
+      <Button href={baseHref('{{buttonPath}}')}>
+        Goto Dashboard
+      </Button>
+    </div>
+  );
+};
+
+export const {{pascalCase componentName}} = ({ ...props }: {{pascalCase folder}}{{pascalCase componentName}}Props) => {
+  return (
+    <EmailContentWrapper email={props.email} previewText="{{previewText}}">
+      <EmailBody {...props} />
+    </EmailContentWrapper>
+  );
+};
+
+{{pascalCase componentName}}.PreviewProps = {
+  email: "notify@haustidy.com",
+  name: "John Doe",
+} as {{pascalCase folder}}{{pascalCase componentName}}Props;
+
+export default {{pascalCase componentName}};

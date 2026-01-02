@@ -1,0 +1,28 @@
+# Example continuous deployment workflow using Fly.io
+# See https://fly.io/docs/app-guides/continuous-deployment-with-github-actions/
+
+name: Deploy
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'emails/**'
+      - 'package.json'
+      - 'yarn.lock'
+
+jobs:
+  deploy:
+    name: Deploy app
+    if: "!contains(github.event.head_commit.message, 'chore(release)')"
+    runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-group
+      cancel-in-progress: true
+##   Replace it with your deployment service
+#    steps:
+#      - uses: actions/checkout@v4
+#      - uses: superfly/flyctl-actions/setup-flyctl@master
+#      - run: flyctl deploy --remote-only
+#        env:
+#          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

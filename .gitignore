@@ -1,0 +1,15 @@
+.idea/
+.junie/
+.sudo/
+dist/
+!.env.sample
+.env
+.env.*
+
+node_modules/
+.react-email/
+.DS_Store
+out/
+
+emails/index.ts
+.output.txt
