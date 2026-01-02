@@ -58,7 +58,7 @@ Open `http://localhost:3000` to see the live preview.
 
 ### 4. CI/CD & Deployment
 
-- **API**: Deploy the `Dockerfile` to your preferred host (Fly.io, Cloud Run, AWS).
+- **API**: Deploy the `Dockerfile` to your preferred host. **Serverless environments (like Google Cloud Run or AWS Fargate) are highly recommended** for cost-efficiency and automatic scaling.
 - **Types**: Publish the package to a private registry (GitHub Packages, NPM) so your backend can consume the generated types.
 
 Check `.github/workflows` for pre-configured GitHub Actions.
