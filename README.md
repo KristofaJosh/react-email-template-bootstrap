@@ -71,7 +71,9 @@ yarn dev
 Open `http://localhost:3000` to see the live preview.
 
 ### 4. Quick Test
-You can test the API immediately using `curl`. This example points to the live environment:
+You can test the API immediately by visiting the **Live Playground** at [emailtemplate.kristofajosh.dev](https://emailtemplate.kristofajosh.dev).
+
+Alternatively, use `curl` to test the API directly:
 ```bash
 curl -X POST https://emailtemplate.kristofajosh.dev/api/render/text \
   -H "Content-Type: application/json" \
