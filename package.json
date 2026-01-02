@@ -1,6 +1,7 @@
 {
   "name": "email-templates",
   "version": "3.5.4",
+  "license": "MIT",
   "private": false,
   "scripts": {
     "build": "yarn gen:templates && email build",

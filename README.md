@@ -106,5 +106,8 @@ const { html, text } = await response.json();
 - `yarn build:api`: Build the production API.
 - `yarn build:types`: Build the TypeScript definitions.
 
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ---
 If this project helped you, please consider giving it a star!
