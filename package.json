@@ -1,5 +1,5 @@
 {
-  "name": "email-templates",
+  "name": "@kristofajosh/email-templates",
   "version": "3.5.4",
   "license": "MIT",
   "private": false,
@@ -71,5 +71,8 @@
     "type": "git",
     "url": "git+https://github.com/Kristofajosh/react-email-template-bootstrap.git",
     "directory": "src"
+  },
+  "publishConfig": {
+    "@kristofajosh:registry": "https://npm.pkg.github.com"
   }
 }

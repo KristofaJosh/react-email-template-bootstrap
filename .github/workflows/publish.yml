@@ -21,34 +21,34 @@ jobs:
     name: Publish to GitHub Packages
     runs-on: ubuntu-latest
 
-#    steps:
-#      - name: Checkout repository
-#        uses: actions/checkout@v4
-#
-#      - name: Use Node.js 22
-#        uses: actions/setup-node@v4
-#        with:
-#          node-version: 22
-#          # private package
-#          registry-url: 'https://npm.pkg.github.com'
-#          scope: '@<org>'
-#
-#      - name: Install dependencies
-#        run: yarn install --frozen-lockfile
-#
-#      - name: Generate templates
-#        run: yarn gen:templates
-#
-#      - name: Validate templates
-#        run: yarn test:templates
-#
-#      - name: Build type declarations
-#        run: yarn build:types
-#
-#      - name: Verify package contents (dry run)
-#        run: npm pack --dry-run
-#
-#      - name: Publish package to GitHub Packages
-#        run: npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: 'https://npm.pkg.github.com'
+          # replace it with your org scope
+          scope: @kristofajosh
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Generate templates
+        run: yarn gen:templates
+
+      - name: Validate templates
+        run: yarn test:templates
+
+      - name: Build type declarations
+        run: yarn build:types
+
+      - name: Verify package contents (dry run)
+        run: npm pack --dry-run
+
+      - name: Publish package to GitHub Packages
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
