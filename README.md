@@ -1,95 +1,110 @@
-Help us reach more developers—star this repo if it helped you today!
-
-[![GitHub stars](img.shields.io)](https://github.com/KristofaJosh/react-email-template-bootstrap)
-
 # React Email Template Bootstrap
 
-This project uses [React Email](https://react.email/) that has a live preview right in your browser so you don't need to keep sending real emails during development.
+A professional, unopinionated starting point for building and managing React-based emails across your organization.
 
-## Getting Started
+## 🚀 The Goal
+Separate **Email Design** (Frontend) from **Email Triggering** (Backend).
 
-First, install the dependencies:
-
-```sh
-yarn install
+```mermaid
+flowchart TD
+  subgraph Frontend
+    A[Create/Edit Template] --> B[Live Preview]
+    B --> C[Deploy API & Publish Types]
+  end
+  subgraph Backend
+    D[Import Types] --> E[Call Render API with Variables]
+    E --> F[Send Email via SMTP/Provider]
+  end
+  C -.-> D
 ```
 
-Then, run the development server:
+## 🛠 Features
+- **Scaffolding**: `yarn gen:email` to quickly create new templates.
+- **Live Preview**: Local development environment with hot reloading via [React Email](https://react.email/).
+- **Type-Safe**: Automatically generates TypeScript definitions for all templates.
+- **API Ready**: Built-in Express server to render emails to HTML/Text on the fly.
+- **Tailwind CSS**: Pre-configured for modern styling.
+- **CI/CD Ready**: Workflows for automated versioning, publishing, and deployment.
 
-```sh
+## 🏁 Quick Start
+
+### 1. Setup the Repository
+Clone this template and update the following in `package.json`:
+- `name`: Change to `@your-org/email-templates` (or your preferred name).
+- `repository`: Update to your GitHub URL.
+
+### 2. Environment Configuration
+Copy `.env.sample` to `.env` and adjust as needed:
+```bash
+cp .env.sample .env
+```
+- `PORT`: (Optional) Port for the API server (default 8080).
+- `BASE_URL`: The URL of your frontend application.
+- `BASE_ASSET_URL`: The URL where your email assets/images are hosted.
+
+### 3. Development Workflow
+
+**Create a new email template:**
+```bash
+yarn gen:email
+```
+This scaffolds a new `.tsx` file in `emails/` using Plop.
+
+**Preview emails:**
+```bash
 yarn dev
 ```
+Open `http://localhost:3000` to see the live preview.
 
-Open [localhost:3000](http://localhost:3000) with your browser to see the result.
+### 4. CI/CD & Deployment
 
-## Scaffolding new emails with Plop
+- **API**: Deploy the `Dockerfile` to your preferred host (Fly.io, Cloud Run, AWS).
+- **Types**: Publish the package to a private registry (GitHub Packages, NPM) so your backend can consume the generated types.
 
-This repository includes a Plop generator to quickly scaffold new email templates.
-Ensure to always use this except otherwise else you may miss important boilerplate code.
+Check `.github/workflows` for pre-configured GitHub Actions.
 
-Run the generator:
+## 🔌 Backend Integration
 
-```sh
-yarn gen:email
+Install your private package:
+```bash
+npm install @your-org/email-templates
 ```
 
-You will be prompted for:
+Use the types to call the API with full type-safety:
+```typescript
+import { EmailRenderPayload } from '@your-org/email-templates';
 
-- componentName: e.g. ActionRequired
-- domain: pick one of general or custom (you can extend this later)
-- customDomain: only when you pick custom
-- previewText: the preview shown in inbox clients
-- buttonPath: path appended to baseUrl for the primary CTA, e.g. /account/orders
-
-This command generates a file at:
-
-```
-emails/<domain>/<kebab-case-component-name>.tsx
-```
-
-Example
-
-```sh
-yarn gen:email
-# componentName: NewNegotiationOffer
-# domain: negotiation
-# previewText: New Negotiation Offer
-# buttonPath: /account/negotiations
-```
-
-This will create emails/negotiation/new-negotiation-offer.tsx similar to the existing example and wired to use:
-
-- EmailContentWrapper
-- EmailBody with a CTA Button linking to baseUrl + buttonPath
-- Footer with the provided email
-- .PreviewProps for local preview
-
-### Next steps to deploy typings for consumer `@<org>/email-templates`
-
-#### 1) Bump version
-
-- Follow semver. For the first public release:
-  ```sh
-  npm version patch -m "chore(release): %s"
-  ```
-  This updates `version` and creates a git tag.
-```json
-{
-  ...
-  "publishConfig": {
-    "@<org>:registry": "https://npm.pkg.github.com"
+// TypeScript will enforce correct variables based on the template!
+const payload: EmailRenderPayload<'general', 'christmas'> = {
+  emailModule: 'general',
+  template: 'christmas',
+  variables: {
+    email: 'recipient@example.com',
+    name: 'John Doe',
   }
-}
+};
+
+const response = await fetch('https://your-email-api.com/api/render', {
+  method: 'POST',
+  body: JSON.stringify(payload),
+  headers: { 'Content-Type': 'application/json' }
+});
+
+const { html, text } = await response.json();
 ```
 
-#### 2) Tag and release notes
+## 📜 API Reference
+- `POST /api/render`: Returns JSON `{ html: string, text: string }`.
+- `POST /api/render/html`: Returns raw HTML body.
+- `POST /api/render/text`: Returns plain text body.
 
-- If you didn’t let `npm version` create a tag, add one and push:
-  ```sh
-  git push --follow-tags
-  ```
-  Create a GitHub Release describing the exported types and usage.
+## 🧪 Scripts
+- `yarn dev`: Start the preview server.
+- `yarn dev:api`: Start the API server locally.
+- `yarn gen:email`: Scaffold a new email.
+- `yarn gen:templates`: Re-generate the template index and types.
+- `yarn build:api`: Build the production API.
+- `yarn build:types`: Build the TypeScript definitions.
 
-## License
-
-MIT License
+---
+If this project helped you, please consider giving it a star!
