@@ -39,6 +39,11 @@ export function getIndexHtml() {
     <p>A service for rendering React-based email templates to HTML and Text.</p>
     <p><strong>Tip:</strong> Prefer setting this up in a serverless environment for better scalability and cost management.</p>
 
+    <div style="background: #ebf8ff; border-left: 4px solid #3182ce; padding: 1rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0;">
+        <h3 style="margin-top: 0; color: #2b6cb0;">🏛 Architecture: Design vs. Triggering</h3>
+        <p style="margin-bottom: 0;">This service decouples <strong>Design</strong> (Frontend/React) from <strong>Triggering</strong> (Backend/Business Logic). The backend only needs to call this API with variables, while the designs are managed independently in this repository.</p>
+    </div>
+
     <h2>🚀 API Endpoints</h2>
     
     <div class="endpoint">
@@ -86,10 +91,6 @@ export function getIndexHtml() {
         <a href="https://github.com/Kristofajosh/react-email-template-bootstrap" target="_blank">Documentation & Repository</a> •
         <a href="/health">Health Check</a>
     </p>
-
-    <div class="footer">
-        Built with React Email Template Bootstrap
-    </div>
 </body>
 </html>
   `

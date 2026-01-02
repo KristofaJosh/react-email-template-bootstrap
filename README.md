@@ -3,20 +3,30 @@
 A professional, unopinionated starting point for building and managing React-based emails across your organization.
 
 ## 🚀 The Goal
-Separate **Email Design** (Frontend) from **Email Triggering** (Backend).
+The core philosophy of this template is to decouple **Email Design** (Frontend) from **Email Triggering** (Backend). This separation allows teams to iterate on designs without touching backend business logic.
 
 ```mermaid
 flowchart TD
-  subgraph Frontend
+  subgraph Frontend ["Design & Development"]
     A[Create/Edit Template] --> B[Live Preview]
     B --> C[Deploy API & Publish Types]
   end
-  subgraph Backend
+  subgraph Backend ["Triggering & Business Logic"]
     D[Import Types] --> E[Call Render API with Variables]
     E --> F[Send Email via SMTP/Provider]
   end
   C -.-> D
 ```
+
+### 🎨 The Frontend (Design)
+- **Tech Stack**: Built with React, Tailwind CSS, and [React Email](https://react.email/).
+- **Workflow**: Designers or Frontend developers create templates in `emails/`, using a live preview server with hot reloading.
+- **Output**: The project exports a **Render API** (to generate HTML/Text) and a **NPM Package** containing TypeScript definitions for all templates.
+
+### ⚙️ The Backend (Triggering)
+- **Simplicity**: The backend doesn't need to know about Email content, React, Tailwind, or complex CSS inlining. It just makes a simple HTTP request.
+- **Type-Safety**: By importing the generated types, the backend gets autocompletion and compile-time validation for email variables.
+- **Scalability**: The rendering logic is offloaded to a dedicated service (ideally serverless), keeping the main backend lean.
 
 ## 🛠 Features
 - **Scaffolding**: `yarn gen:email` to quickly create new templates.
