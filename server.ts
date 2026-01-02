@@ -10,7 +10,6 @@ import {
   type TemplateModules,
   templates,
 } from './emails/index'
-import { getIndexHtml } from './index-html'
 
 const app = express()
 
