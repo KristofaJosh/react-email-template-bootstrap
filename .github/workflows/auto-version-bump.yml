@@ -1,0 +1,57 @@
+name: Auto Version Bump
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'emails/**'
+      - 'components/**'
+      - 'lib/**'
+      - 'utils/**'
+      - 'scripts/**'
+      - 'package.json'
+
+jobs:
+  bump:
+    if: "!contains(github.event.head_commit.message, 'chore(release)')"
+    runs-on: ubuntu-latest
+    concurrency:
+      group: version-bump-${{ github.ref }}
+      cancel-in-progress: true
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_TOKEN || secrets.GITHUB_TOKEN }}
+          fetch-depth: 0 # Required to compare against previous commits
+
+      - name: Use Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Determine bump type
+        id: detect
+        run: |
+          BUMP=$(node scripts/check-bump-type.mjs)
+          echo "type=$BUMP" >> $GITHUB_OUTPUT
+          echo "Detected bump type: $BUMP"
+
+      - name: Configure Git
+        if: steps.detect.outputs.type != 'none'
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Bump and Push
+        if: steps.detect.outputs.type != 'none'
+        run: |
+          npm version ${{ steps.detect.outputs.type }} -m "chore(release): bump version %s"
+          git push --follow-tags

@@ -1,0 +1,25 @@
+# flyctl launch added from .gitignore
+**/.idea
+**/.junie
+**/.sudo
+!**/.env.sample
+**/.env
+**/.env.*
+
+**/node_modules
+**/.react-email
+**/.DS_Store
+**/out
+
+**/emails/index.ts
+
+# flyctl launch added from .idea/.gitignore
+# Default ignored files
+.idea/shelf
+.idea/workspace.xml
+# Editor-based HTTP Client requests
+.idea/httpRequests
+# Datasource local storage ignored files
+.idea/dataSources
+.idea/dataSources.local.xml
+fly.toml
