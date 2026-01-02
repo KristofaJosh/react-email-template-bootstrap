@@ -9,6 +9,7 @@ import {
   type TemplateModules,
   templates,
 } from './emails/index'
+import { getIndexHtml } from './index-html'
 
 const app = express()
 app.use(bodyParser.json({ limit: '1mb' }))
@@ -127,7 +128,10 @@ app.post('/api/render/text', async (req, res) => {
 
 // Health checks
 app.get('/health', (_req, res) => res.status(200).send('ok'))
-app.get('/', (_req, res) => res.status(200).send('Email template ready'))
+
+app.get('/', (_req, res) => {
+  res.status(200).send(getIndexHtml())
+})
 
 // Cloud Run provides PORT via env var
 const PORT = process.env.PORT || 8080
