@@ -16,7 +16,7 @@ const EmailBody = ({ name }: GeneralChristmasProps) => {
   return (
     <>
       <Img
-        src={`${baseAssetUrl}/email/christmas.jpg`}
+        src={`${baseAssetUrl}/img.png`}
         alt="Merry Christmas"
         width="100%"
         className="mb-8 rounded-lg"

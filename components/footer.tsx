@@ -63,7 +63,7 @@ export const Footer = ({ email }: { email: string }) => {
           {socialMediaIcons.map(({ src, href }, index) => (
             <a key={index} href={href} target="_blank" rel="noopener noreferrer">
               <Img
-                src={`${baseAssetUrl}/email${src}`}
+                src={`${baseAssetUrl}/${src}`}
                 alt={getSocialName(src)}
                 width="20"
                 height="20"

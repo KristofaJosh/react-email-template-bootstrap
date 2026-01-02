@@ -18,7 +18,7 @@ const EmailBody = ({ name, year = new Date().getFullYear() }: GeneralNewYearProp
   return (
     <>
       <Img
-        src={`${baseAssetUrl}/email/new-year-26_2.png`}
+        src={`${baseAssetUrl}/img.png`}
         alt={`Happy New Year ${currentYear}`}
         width="100%"
         className="mb-4 rounded-lg"
