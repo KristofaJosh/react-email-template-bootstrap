@@ -47,6 +47,8 @@ This will update `package.json`, `README.md`, and other relevant files.
 
 Then, update the `repository` field in `package.json` to your GitHub URL.
 
+Then in `server.ts`, delete the `GET /` route and `CORS origin`.
+
 ### 2. Environment Configuration
 Copy `.env.sample` to `.env` and adjust as needed:
 ```bash

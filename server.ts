@@ -13,12 +13,15 @@ import {
 import { getIndexHtml } from './index-html'
 
 const app = express()
-// TODO: Important, Remove this in prod
+
+// TODO: Important, Remove this after cloning
+const liveDemoUrl = 'https://email-live-stage.lovable.app'
 app.use(
   cors({
-    origin: ['https://email-live-stage.lovable.app'],
+    origin: [liveDemoUrl],
   })
 )
+
 app.use(bodyParser.json({ limit: '1mb' }))
 
 // Shared: resolve the requested email component into a React element
@@ -136,8 +139,9 @@ app.post('/api/render/text', async (req, res) => {
 // Health checks
 app.get('/health', (_req, res) => res.status(200).send('ok'))
 
+// TODO: Important, Remove this after cloning
 app.get('/', (_req, res) => {
-  res.status(200).send(getIndexHtml())
+  res.redirect(liveDemoUrl)
 })
 
 // Cloud Run provides PORT via env var
