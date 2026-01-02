@@ -36,7 +36,8 @@ export function getIndexHtml() {
 </head>
 <body>
     <h1>📧 Email Template API</h1>
-    <p>A professional service for rendering React-based email templates to HTML and Text.</p>
+    <p>A service for rendering React-based email templates to HTML and Text.</p>
+    <p><strong>Tip:</strong> Prefer setting this up in a serverless environment for better scalability and cost management.</p>
 
     <h2>🚀 API Endpoints</h2>
     
@@ -68,6 +69,18 @@ export function getIndexHtml() {
   }
 }</pre>
 
+    <h2>🧪 Try it out</h2>
+    <p>You can test this API immediately using cURL. This example points to the live preview environment:</p>
+    <pre>curl -X POST https://react-email-template-bootstrap.vercel.app/api/render/text \\
+  -H "Content-Type: application/json" \\
+  -d '{
+  "emailModule": "general",
+  "template": "christmas",
+  "variables": {
+    "email": "user@example.com",
+    "name": "John Doe"
+  }
+}'</pre>
     <h2>🔗 Resources</h2>
     <p>
         <a href="https://github.com/Kristofajosh/react-email-template-bootstrap" target="_blank">Documentation & Repository</a> •
