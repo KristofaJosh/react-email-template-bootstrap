@@ -39,9 +39,13 @@ flowchart TD
 ## 🏁 Quick Start
 
 ### 1. Setup the Repository
-Clone this template and update the following in `package.json`:
-- `name`: Change to `@your-org/email-templates` (or your preferred name).
-- `repository`: Update to your GitHub URL.
+Clone this template and run the following command to rename the package scope to your organization:
+```bash
+yarn rename-scope @your-org
+```
+This will update `package.json`, `README.md`, and other relevant files.
+
+Then, update the `repository` field in `package.json` to your GitHub URL.
 
 ### 2. Environment Configuration
 Copy `.env.sample` to `.env` and adjust as needed:
@@ -115,6 +119,7 @@ const { html, text } = await response.json();
 - `yarn gen:templates`: Re-generate the template index and types.
 - `yarn build:api`: Build the production API.
 - `yarn build:types`: Build the TypeScript definitions.
+- `yarn rename-scope @your-org`: Rename the package scope across the project.
 
 ## 📄 License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

@@ -1,4 +1,4 @@
-name: Publish @<org>/email-templates
+name: Publish email-templates
 
 on:
   workflow_dispatch: {}
@@ -31,7 +31,7 @@ jobs:
           node-version: 22
           registry-url: 'https://npm.pkg.github.com'
           # replace it with your org scope
-          scope: @kristofajosh
+          scope: @kristof
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile

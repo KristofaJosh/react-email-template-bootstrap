@@ -17,7 +17,8 @@
     "start:api": "node dist/server.js",
     "dev:api": "tsx server.ts",
     "build:types": "tsc -p tsconfig.build.json",
-    "prepublishOnly": "yarn gen:templates && yarn build:types"
+    "prepublishOnly": "yarn gen:templates && yarn build:types",
+    "rename-scope": "bash scripts/rename-scope.sh"
   },
   "files": [
     "dist"
