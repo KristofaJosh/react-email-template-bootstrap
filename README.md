@@ -70,11 +70,25 @@ yarn dev
 ```
 Open `http://localhost:3000` to see the live preview.
 
-### 4. CI/CD & Deployment
+### 4. Quick Test
+You can test the API immediately using `curl`. This example points to the live environment:
+```bash
+curl -X POST https://emailtemplate.kristofajosh.dev/api/render/text \
+  -H "Content-Type: application/json" \
+  -d '{
+  "emailModule": "general",
+  "template": "christmas",
+  "variables": {
+    "email": "user@example.com",
+    "name": "John Doe"
+  }
+}'
+```
+
+### 5. CI/CD & Deployment
 
 - **API**: Deploy the `Dockerfile` to your preferred host. **Serverless environments (like Google Cloud Run or AWS Fargate) are highly recommended** for cost-efficiency and automatic scaling.
-- **Types**: Publish the package to a private registry (GitHub Packages, NPM) so your backend can consume the generated types.
-
+- **Types**: With step 1 setup correctly, Auto publishes the package to a private registry (GitHub Packages, NPM) so your backend can consume the generated types.
 Check `.github/workflows` for pre-configured GitHub Actions.
 
 ## 🔌 Backend Integration
@@ -82,6 +96,13 @@ Check `.github/workflows` for pre-configured GitHub Actions.
 Install your private package:
 ```bash
 npm install @your-org/email-templates
+```
+
+_installation in the backend may require `.npmrc` file_
+```text
+    registry=https://registry.npmjs.org/
+    @your-org:registry=https://npm.pkg.github.com/
+    //npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN
 ```
 
 Use the types to call the API with full type-safety:

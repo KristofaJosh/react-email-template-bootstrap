@@ -76,7 +76,7 @@ export function getIndexHtml() {
 
     <h2>🧪 Try it out</h2>
     <p>You can test this API immediately using cURL. This example points to the live preview environment:</p>
-    <pre>curl -X POST https://react-email-template-bootstrap.vercel.app/api/render/text \\
+    <pre>curl -X POST https://emailtemplate.kristofajosh.dev/api/render/text \\
   -H "Content-Type: application/json" \\
   -d '{
   "emailModule": "general",
