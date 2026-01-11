@@ -17,6 +17,7 @@ flowchart TD
   end
   C -.-> D
 ```
+You can test this immediately by visiting the **Live Playground** at [emailtemplate.kristofajosh.dev](https://emailtemplate.kristofajosh.dev).
 
 ### 🎨 The Frontend (Design)
 - **Tech Stack**: Built with React, Tailwind CSS, and [React Email](https://react.email/).
@@ -75,9 +76,6 @@ Open `http://localhost:3000` to see the live preview.
 - **API**: Deploy the `Dockerfile` to your preferred host. **Serverless environments (like Google Cloud Run or AWS Fargate) are highly recommended** for cost-efficiency and automatic scaling.
 - **Types**: With step 1 setup correctly, Auto publishes the package to a private registry (GitHub Packages, NPM) so your backend can consume the generated types.
   Check `.github/workflows` for pre-configured GitHub Actions.
-
-## Example Implementation
-You can test the API immediately by visiting the **Live Playground** at [emailtemplate.kristofajosh.dev](https://emailtemplate.kristofajosh.dev).
 
 ## 🔌 Backend Integration
 
