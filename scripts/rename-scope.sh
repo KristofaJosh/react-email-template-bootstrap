@@ -58,7 +58,18 @@ done
 replace_scope "@your-org" "$NEW_SCOPE" "README.md"
 replace_scope "@<org>" "$NEW_SCOPE" "src/index.ts"
 
+# 3. Reset version number to 0.0.1
+if [ -f "package.json" ]; then
+  echo "Resetting version to 0.0.1..."
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    sed -i '' 's/"version": "[^"]*"/"version": "0.0.1"/' package.json
+  else
+    sed -i 's/"version": "[^"]*"/"version": "0.0.1"/' package.json
+  fi
+fi
+
 echo ""
 echo "✅ Scope successfully renamed to $NEW_SCOPE"
+echo "✅ Version reset to 0.0.1"
 echo "Remember to update 'repository.url' in package.json 👈🏽"
 
