@@ -47,8 +47,6 @@ This will update `package.json`, `README.md`, and other relevant files.
 
 Then, update the `repository` field in `package.json` to your GitHub URL.
 
-Then in `server.ts`, delete the `GET /` route and `CORS origin`.
-
 ### 2. Environment Configuration
 Copy `.env.sample` to `.env` and adjust as needed:
 ```bash
@@ -64,7 +62,7 @@ cp .env.sample .env
 ```bash
 yarn gen:email
 ```
-This scaffolds a new `.tsx` file in `emails/` using Plop.
+This scaffolds a new `.tsx` file in `emails/` using Plop. You can configure this to suite your needs.
 
 **Preview emails:**
 ```bash
@@ -72,28 +70,14 @@ yarn dev
 ```
 Open `http://localhost:3000` to see the live preview.
 
-### 4. Quick Test
-You can test the API immediately by visiting the **Live Playground** at [emailtemplate.kristofajosh.dev](https://emailtemplate.kristofajosh.dev).
-
-Alternatively, use `curl` to test the API directly:
-```bash
-curl -X POST https://emailtemplate.kristofajosh.dev/api/render/text \
-  -H "Content-Type: application/json" \
-  -d '{
-  "emailModule": "general",
-  "template": "christmas",
-  "variables": {
-    "email": "user@example.com",
-    "name": "John Doe"
-  }
-}'
-```
-
-### 5. CI/CD & Deployment
+### 4. CI/CD & Deployment
 
 - **API**: Deploy the `Dockerfile` to your preferred host. **Serverless environments (like Google Cloud Run or AWS Fargate) are highly recommended** for cost-efficiency and automatic scaling.
 - **Types**: With step 1 setup correctly, Auto publishes the package to a private registry (GitHub Packages, NPM) so your backend can consume the generated types.
-Check `.github/workflows` for pre-configured GitHub Actions.
+  Check `.github/workflows` for pre-configured GitHub Actions.
+
+## Example Implementation
+You can test the API immediately by visiting the **Live Playground** at [emailtemplate.kristofajosh.dev](https://emailtemplate.kristofajosh.dev).
 
 ## 🔌 Backend Integration
 
