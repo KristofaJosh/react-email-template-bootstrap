@@ -58,6 +58,7 @@ done
 replace_scope "@your-org" "$NEW_SCOPE" "README.md"
 replace_scope "@<org>" "$NEW_SCOPE" "src/index.ts"
 
+echo ""
 echo "✅ Scope successfully renamed to $NEW_SCOPE"
-echo "👋🏽 Remember to update repository.url in package.json"
+echo "Remember to update 'repository.url' in package.json 👈🏽"
 
