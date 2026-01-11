@@ -17,6 +17,7 @@ flowchart TD
   end
   C -.-> D
 ```
+See how it was implemented in this [repo](https://github.com/KristofaJosh/react-email-template-bootstrap-example).  
 You can test this immediately by visiting the **Live Playground** at [emailtemplate.kristofajosh.dev](https://emailtemplate.kristofajosh.dev).
 
 ### 🎨 The Frontend (Design)
