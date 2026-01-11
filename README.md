@@ -3,7 +3,7 @@
 A professional, unopinionated starting point for building and managing React-based emails across your organization.
 
 ## 🚀 The Goal
-The core philosophy of this template is to decouple **Email Design** (Frontend) from **Email Triggering** (Backend). This separation allows teams to iterate on designs without touching backend business logic.
+The core philosophy of this template is to decouple **Email Design** (Frontend) from **Email Triggering** (Backend). This separation allows Frontend and backend work independently: designers build and preview email templates; the backend asynchronously requests rendered HTML and sends emails without touching template logic.
 
 ```mermaid
 flowchart TD
